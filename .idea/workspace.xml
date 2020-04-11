@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3a718f6-b896-4350-aa4e-f0cd16dfafcd" name="Default Changelist" comment="" />
+    <list default="true" id="b3a718f6-b896-4350-aa4e-f0cd16dfafcd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/kafkaplayground.kotlin_module" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +18,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -22,6 +29,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1a7wj8gxLKZ0DbH6triu1YrKazd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,7 +48,7 @@
       <recent name="com.kafkaplayground.simplestep" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConsumerDemoAssignAndSeek">
+  <component name="RunManager" selected="Application.TwitterProducer">
     <configuration name="ConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.kafkaplayground.simplestep.ConsumerDemo" />
       <module name="kafkaplayground" />
@@ -80,19 +88,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProducerDemoWithCallback" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kafkaplayground.simplestep.ProducerDemoWithCallback" />
-      <module name="kafkaplayground" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kafkaplayground.simplestep.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ProducerDemoWithKey" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.kafkaplayground.simplestep.ProducerDemoWithKey" />
       <module name="kafkaplayground" />
@@ -106,20 +101,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TwitterProducer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kafkaplayground.twitter.TwitterProducer" />
+      <module name="kafkaplayground" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kafkaplayground.twitter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.ConsumerDemo" />
       <item itemvalue="Application.ConsumerGroupsDemo1" />
-      <item itemvalue="Application.ProducerDemoWithCallback" />
       <item itemvalue="Application.ProducerDemoWithKey" />
       <item itemvalue="Application.ConsumerDemoAssignAndSeek" />
+      <item itemvalue="Application.TwitterProducer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TwitterProducer" />
         <item itemvalue="Application.ConsumerDemoAssignAndSeek" />
         <item itemvalue="Application.ProducerDemoWithKey" />
         <item itemvalue="Application.ConsumerGroupsDemo1" />
         <item itemvalue="Application.ConsumerDemo" />
-        <item itemvalue="Application.ProducerDemoWithCallback" />
       </list>
     </recent_temporary>
   </component>
@@ -141,25 +149,41 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1586114370167" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1586119775362">
+    <state x="344" y="52" key="CommitChangelistDialog2" timestamp="1586644020039">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586119775362" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1586119775360">
+    <state x="344" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586644020039" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1586646443592">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586119775360" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1586119775359">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586646443592" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.793@0.23.1440.793" timestamp="1586123044973" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1586646443591">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586119775359" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1586119775361">
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586646443591" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.793@0.23.1440.793" timestamp="1586123044967" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1586646443590">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586119775361" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586646443590" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.793@0.23.1440.793" timestamp="1586123044967" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1586646443592">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586646443592" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.793@0.23.1440.793" timestamp="1586123044968" />
     <state x="221" y="23" width="1024" height="801" key="SettingsEditor" timestamp="1586110140387">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="23" width="1024" height="801" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1586110140387" />
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1586127957676">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1586127957676" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1586645607989">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1586645607989" />
   </component>
 </project>
