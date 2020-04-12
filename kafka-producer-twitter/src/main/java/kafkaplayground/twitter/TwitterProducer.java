@@ -1,4 +1,4 @@
-package com.kafkaplayground.twitter;
+package kafkaplayground.twitter;
 
 import com.google.common.collect.Lists;
 import com.twitter.hbc.ClientBuilder;

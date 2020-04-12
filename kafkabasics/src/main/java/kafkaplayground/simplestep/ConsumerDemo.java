@@ -1,4 +1,4 @@
-package com.kafkaplayground.simplestep;
+package kafkaplayground.simplestep;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

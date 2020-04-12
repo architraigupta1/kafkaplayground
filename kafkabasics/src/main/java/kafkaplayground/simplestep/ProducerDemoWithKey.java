@@ -1,4 +1,4 @@
-package com.kafkaplayground.simplestep;
+package kafkaplayground.simplestep;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
