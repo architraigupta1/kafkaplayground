@@ -1,5 +1,6 @@
 package kafkaplayground.twitter;
 
+import com.google.gson.JsonParser;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -11,6 +12,8 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -27,6 +30,7 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class ElasticSearchConsumer {
+
   public static void main(String[] args) throws IOException, InterruptedException {
     Logger logger = LoggerFactory.getLogger(ElasticSearchConsumer.class);
 
@@ -38,17 +42,29 @@ public class ElasticSearchConsumer {
     while(true) {
       ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
 
+      logger.info("Records received count : {}", records.count());
+
+      BulkRequest bulkRequest = new BulkRequest();
+
       for (ConsumerRecord<String, String> record : records) {
-        IndexRequest indexRequest = new IndexRequest("twitter", "tweets")
-            .source(record.value(), XContentType.JSON);
+        try {
+          String id = extractIdFromTweet(record.value());
+          IndexRequest indexRequest = new IndexRequest("twitter", "tweets", id)
+              .source(record.value(), XContentType.JSON);
 
-        IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
-        String id = indexResponse.getId();
-
-        logger.info("Created document {}", id);
-        Thread.sleep(1000);
-
+          bulkRequest.add(indexRequest);
+        } catch (NullPointerException ex) {
+          logger.error("Bad data passed: {}", record.value());
+        }
       }
+      if (records.count() <= 0) {
+        continue;
+      }
+      BulkResponse bulkItemResponses = client.bulk(bulkRequest, RequestOptions.DEFAULT);
+      logger.info("committing offsets...");
+      consumer.commitSync();
+      logger.info("committed offsets");
+      Thread.sleep(1000);
     }
 
     // To close the client gracefully.
@@ -87,6 +103,8 @@ public class ElasticSearchConsumer {
     properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
     properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
     properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+    properties.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+    properties.setProperty(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "100");
 
     //create consumer
     KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
@@ -95,5 +113,14 @@ public class ElasticSearchConsumer {
     consumer.subscribe(Arrays.asList(topic));
 
     return consumer;
+  }
+
+  private static String extractIdFromTweet(String tweet) {
+    return JsonParser
+        .parseString(tweet)
+        .getAsJsonObject()
+        .get("id_str")
+        .getAsString();
+
   }
 }
