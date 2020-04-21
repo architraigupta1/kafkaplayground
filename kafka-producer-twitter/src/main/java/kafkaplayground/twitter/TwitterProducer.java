@@ -46,6 +46,10 @@ public class TwitterProducer {
     new TwitterProducer().run();
   }
 
+  public Client getclient() {
+    Client client = createTwitterClient(null);
+    return client;
+  }
   public void run() {
     logger.info("Setup");
     /** Set up your blocking queues: Be sure to size these properly based on expected TPS of your stream */
