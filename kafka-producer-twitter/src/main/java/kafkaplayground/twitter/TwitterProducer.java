@@ -38,7 +38,7 @@ public class TwitterProducer {
     this.consumerSecret = "A6q3AxUReRpZOMnSlihElRmje2sDWjH1uVgmzoOqg3tN5kcToA";
     this.token = "1249094221560250370-uG0UNPjoNgdjRyiXx8TLK6VXVMM1e2";
     this.tokenSecret = "N44SELR9ZPb7TdAA6GKhWkpRbtaizSjBUhxINlp2QRIjL";
-    this.terms = Lists.newArrayList("bitcoin", "usa", "sports", "politics");
+    this.terms = Lists.newArrayList("bitcoin", "usa", "sports", "politics", "coronavirus");
   }
 
   public static void main(String[] args) {
