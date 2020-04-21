@@ -17,6 +17,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
@@ -51,7 +52,8 @@ public class TwitterProducer {
     BlockingQueue<String> msgQueue = new LinkedBlockingQueue(1000);
 
     // Create a twitter client
-    Client client = createTwitterClient(msgQueue);
+    List<Client> clients = createTwitterClient(msgQueue);
+    Client client = clients.get(0);
     // Attempts to establish a connection.
     client.connect();
 
@@ -91,7 +93,7 @@ public class TwitterProducer {
     //loop to send tweets to kafka
   }
 
-  private Client createTwitterClient(BlockingQueue<String> msgQueue) {
+  private List<Client> createTwitterClient(BlockingQueue<String> msgQueue) {
 
     /** Declare the host you want to connect to, the endpoint, and authentication (basic auth or oauth) */
     Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
@@ -111,7 +113,7 @@ public class TwitterProducer {
         .processor(new StringDelimitedProcessor(msgQueue));
 
     Client hosebirdClient = builder.build();
-    return hosebirdClient;
+    return Arrays.asList(hosebirdClient);
   }
 
   private KafkaProducer<String, String> createKafkaProducer() {
